@@ -43,8 +43,7 @@ public class Usuario {
     private String cidade;
     @Column(nullable = true, length = 2)
     private String uf;
-    @Column(nullable = true, length = 45)
-    private String tipoUsuario;
+    
     private boolean codStatus;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
