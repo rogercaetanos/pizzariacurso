@@ -1,5 +1,7 @@
 package com.itb.inf3an25.pizzariacurso.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,15 +25,19 @@ public class Telefone {
     private Long id;
     @Column(nullable = false, length = 20)
     private String numero;
+    @JsonIgnore
     private boolean codStatus;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", nullable = true)
     private Usuario usuario;
 
-    @Transient      
-    private String mensagemErro = "";
     @Transient
+    @JsonIgnore      
+    private String mensagemErro = "";
+
+    @Transient
+    @JsonIgnore
     private boolean isValid = true;
 
     

@@ -1,5 +1,7 @@
 package com.itb.inf3an25.pizzariacurso.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,6 +29,7 @@ private Long id;
 private int quantidadeItem;
 @Column(nullable = false, columnDefinition = "DECIMAL(5,2)")
 private double precoUnitario;
+@JsonIgnore
 private boolean codStatus;
 
 // Relacionamento - Esta é uma entidade associativa entre Produto e Pedido
@@ -41,9 +44,12 @@ private Produto produto;
 
 
 
-@Transient         
-private String mensagemErro = "";
 @Transient
+@JsonIgnore         
+private String mensagemErro = "";
+
+@Transient
+@JsonIgnore
 private boolean isValid = true;
 
 public boolean validarItemPedido() {

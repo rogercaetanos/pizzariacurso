@@ -39,6 +39,8 @@ public class Produto {
     private double precoVenda;
     @Column(nullable = true, columnDefinition = "DECIMAL(5,2)")
     private double precoCompra;
+    
+    @JsonIgnore
     private boolean codStatus;
 
     // Relacionamento entre classes
@@ -69,8 +71,11 @@ public class Produto {
     // Atributos de apoio
 
     @Transient         // Informa que o atributo NÃO É COLUNA DE BANCO DE DADOS  
+    @JsonIgnore
     private String mensagemErro = "";
+   
     @Transient
+    @JsonIgnore
     private boolean isValid = true;
 
     public boolean validarProduto() {

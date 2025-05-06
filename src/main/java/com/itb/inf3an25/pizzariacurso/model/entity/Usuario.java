@@ -43,16 +43,19 @@ public class Usuario {
     private String cidade;
     @Column(nullable = true, length = 2)
     private String uf;
-    
+    @JsonIgnore
     private boolean codStatus;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Telefone> telefones = new ArrayList<>();
 
-    @Transient      
-    private String mensagemErro = "";
     @Transient
+    @JsonIgnore      
+    private String mensagemErro = "";
+    
+    @Transient
+    @JsonIgnore
     private boolean isValid = true;
 
     public boolean validarUsuario(){

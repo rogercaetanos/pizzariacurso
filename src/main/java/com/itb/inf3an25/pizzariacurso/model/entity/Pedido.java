@@ -37,6 +37,7 @@ private LocalDateTime dataHoraEntrega;
 private double valorTotal;
 @Column(nullable = false, length = 20)
 private String status;
+@JsonIgnore
 private boolean codStatus;
 
 
@@ -45,9 +46,12 @@ private boolean codStatus;
 private List<ItemPedido> itemPedidos = new ArrayList<>();
 
 
-@Transient         
+@Transient 
+@JsonIgnore        
 private String mensagemErro = "";
+
 @Transient
+@JsonIgnore
 private boolean isValid = true;
 
 public boolean validarPedido() {
